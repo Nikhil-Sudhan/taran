@@ -3,9 +3,8 @@ const menu=document.querySelector('.menu-toggle');const nav=document.querySelect
 menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);menu.innerHTML=open?'Close <span>−</span>':'Menu <span>+</span>'});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){menu.click();menu.focus()}});
 document.querySelector('.back-top')?.addEventListener('click',()=>{window.scrollTo({top:0,behavior:reducedMotion.matches?'instant':'smooth'});document.querySelector('.wordmark').focus({preventScroll:true})});
-const movie=document.querySelector('#hero-video'),toggle=document.querySelector('#motion-toggle');
-const updateVideoButton=()=>{if(!movie||!toggle)return;toggle.innerHTML=movie.paused?'▶ <span>PLAY FILM</span>':'Ⅱ <span>PAUSE FILM</span>';toggle.setAttribute('aria-label',movie.paused?'Play background video':'Pause background video')};
-if(movie){if(reducedMotion.matches)movie.pause();movie.addEventListener('pause',updateVideoButton);movie.addEventListener('play',updateVideoButton);toggle.addEventListener('click',()=>movie.paused?movie.play().catch(()=>updateVideoButton()):movie.pause());updateVideoButton();reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)movie.pause()})}
+const movie=document.querySelector('#hero-video');
+if(movie){movie.muted=true;movie.loop=true;movie.play().catch(()=>{});}
 if(!reducedMotion.matches){document.documentElement.classList.add('js-motion');const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e))}
 const layers=[...document.querySelectorAll('[data-parallax]')];let ticking=false;
 function parallax(){if(!reducedMotion.matches)layers.forEach(el=>{const r=el.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const offset=Math.max(-90,Math.min(90,-r.top*Number(el.dataset.parallax)));el.style.transform=`translate3d(0,${offset}px,0)`}});ticking=false}
