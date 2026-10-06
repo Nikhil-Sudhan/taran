@@ -1,0 +1,5 @@
+import fs from 'node:fs';import path from 'node:path';
+const pages=['index','capabilities','product','about','team','contact'];let checked=0;
+for(const page of pages){const html=fs.readFileSync(`dist/${page}.html`,'utf8');if((html.match(/<h1[ >]/g)||[]).length!==1)throw Error(`Invalid heading structure: ${page}`);for(const match of html.matchAll(/(?:src|href)="([^"]+)"/g)){const ref=match[1];if(/^(https?:|mailto:|tel:|#)/.test(ref))continue;if(!fs.existsSync(path.join('dist',ref.split('#')[0])))throw Error(`Missing ${ref} in ${page}`);checked++}const response=await fetch(`http://127.0.0.1:4173/${page}.html`);if(response.status!==200)throw Error(`HTTP error: ${page}`)}
+const range=await fetch('http://127.0.0.1:4173/assets/isa-animation.mp4',{headers:{Range:'bytes=0-1023'}});if(range.status!==206||(await range.arrayBuffer()).byteLength!==1024)throw Error('Video byte range failed');
+console.log(`PASS: six pages; ${checked} local references; video streaming range; one main heading per page.`);

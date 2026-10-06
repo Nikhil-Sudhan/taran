@@ -1,0 +1,1 @@
+{"name":"spacekaur-site","private":true,"type":"module","scripts":{"build":"node generate.mjs","start":"node server.mjs"}}
