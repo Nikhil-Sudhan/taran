@@ -1,0 +1,16 @@
+{
+  "mode": "built-in image_gen",
+  "purpose": "Remove rectangular grey backgrounds from product page images",
+  "assets": [
+    {
+      "source": "dist/assets/isher-drive.webp",
+      "output": "dist/assets/isher-drive-cutout.png",
+      "prompt": "Use case: background-extraction. Edit target: the supplied ISHER servo drive product image. Remove ONLY the grey tabletop/background and its cast shadow, producing a precise product cutout on a genuinely transparent alpha background. Preserve the complete board silhouette, exact camera angle, every electronic component, connector, pin, screw, gold standoff, colours, lighting on the hardware, and the text 'ISHER SKD-I 48/5'. Keep the original 3:2 framing with the whole product visible; no cropping, no redesign, no new objects or retouching. Background and holes open to the background must be transparent; no white or grey matte, no checkerboard painted into pixels. Output an RGBA PNG."
+    },
+    {
+      "source": "dist/assets/oasis-motor.webp",
+      "output": "dist/assets/oasis-motor-cutout.png",
+      "prompt": "Use case: background-extraction. Edit target: the supplied OASIS precision motor product image. Remove ONLY the grey tabletop/background and its cast shadow, producing a precise product cutout on a genuinely transparent alpha background. Preserve the complete motor, mounting plate, screws, shaft and every coloured wire, exact camera angle, geometry, texture, colours and lighting on the hardware. Preserve the exact printed text 'SpaceKaur' and 'OASIS SKM-D22'. Keep original 3:2 framing, full mounting plate and original cable extending to the right frame edge. No redesign, new objects, missing wires or retouching. Background visible through mounting holes must also be transparent. No white/grey matte or painted checkerboard. Output an RGBA PNG."
+    }
+  ]
+}
