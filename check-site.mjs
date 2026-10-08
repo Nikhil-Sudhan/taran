@@ -1,6 +1,30 @@
 import fs from 'node:fs';import path from 'node:path';
 const pages=['index','capabilities','product','about','team','contact'];let checked=0;const videos=new Set();const posters=new Set();
-for(const page of pages){const html=fs.readFileSync(`dist/${page}.html`,'utf8');if((html.match(/<h1[ >]/g)||[]).length!==1)throw Error(`Invalid heading structure: ${page}`);for(const match of html.matchAll(/(?:src|href|poster)="([^"]+)"/g)){const ref=match[1];if(/^(https?:|mailto:|tel:|#)/.test(ref))continue;const local=ref.split('#')[0];if(!fs.existsSync(path.join('dist',local)))throw Error(`Missing ${ref} in ${page}`);if(local.endsWith('.mp4'))videos.add(local);if(match[0].startsWith('poster='))posters.add(local);if(ref.includes('#')){const id=ref.split('#')[1];const target=fs.readFileSync(path.join('dist',local),'utf8');if(!target.includes(`id="${id}"`))throw Error(`Missing anchor ${ref}`)}checked++}const response=await fetch(`http://127.0.0.1:4173/${page}.html`);if(response.status!==200)throw Error(`HTTP error: ${page}`)}
-for(const ref of videos){const range=await fetch(`http://127.0.0.1:4173/${ref}`,{headers:{Range:'bytes=0-1023'}});if(range.status!==206||(await range.arrayBuffer()).byteLength!==1024)throw Error(`Video byte range failed: ${ref}`)}
-for(const ref of posters){const response=await fetch(`http://127.0.0.1:4173/${ref}`);if(response.status!==200||!response.headers.get('content-type')?.startsWith('image/'))throw Error(`Poster failed: ${ref}`);await response.arrayBuffer()}
-console.log(`PASS: six pages; ${checked} local references and product anchors; ${videos.size} streaming videos; ${posters.size} posters; one main heading per page.`);
+const origin='http://127.0.0.1:4173';
+const route=page=>page==='index'?'/':`/${page}/`;
+for(const page of pages){
+  const address=route(page);const html=fs.readFileSync(`dist${address}index.html`,'utf8');
+  if((html.match(/<h1[ >]/g)||[]).length!==1)throw Error(`Invalid heading structure: ${page}`);
+  for(const match of html.matchAll(/(?:src|href|poster)="([^"]+)"/g)){
+    const ref=match[1];if(/^(https?:|mailto:|tel:)/.test(ref))continue;
+    if(/^[^#]*\.html/.test(ref))throw Error(`Legacy navigation URL: ${ref}`);
+    const url=new URL(ref,origin+address);const pathname=url.pathname;
+    const local=path.join('dist',pathname.endsWith('/')?pathname+'index.html':pathname);
+    if(!fs.existsSync(local))throw Error(`Missing ${ref} in ${page}`);
+    if(pathname.endsWith('.mp4'))videos.add(pathname);
+    if(match[0].startsWith('poster='))posters.add(pathname);
+    if(url.hash&&!fs.readFileSync(local,'utf8').includes(`id="${url.hash.slice(1)}"`))throw Error(`Missing anchor ${ref}`);
+    checked++;
+  }
+  const response=await fetch(origin+address);if(response.status!==200)throw Error(`HTTP error: ${address}`);
+  const legacy=await fetch(`${origin}/${page}.html`,{redirect:'manual'});
+  if(legacy.status!==308||legacy.headers.get('location')!==address)throw Error(`Legacy redirect failed: ${page}`);
+  if(page!=='index'){const bare=await fetch(`${origin}/${page}`,{redirect:'manual'});if(bare.status!==308||bare.headers.get('location')!==address)throw Error(`Clean URL redirect failed: ${page}`)}
+}
+const product=fs.readFileSync('dist/product/index.html','utf8');
+if((product.match(/class="product-editorial /g)||[]).length!==4||/data-product-step|product-showcase|OASIS \/ IN MOTION|A closer look/.test(product))throw Error('Product layout regression');
+if(fs.readFileSync('dist/capabilities/index.html','utf8').includes('simulink-model.webp'))throw Error('Schematic is still present');
+for(const ref of videos){const range=await fetch(origin+ref,{headers:{Range:'bytes=0-1023'}});if(range.status!==206||(await range.arrayBuffer()).byteLength!==1024)throw Error(`Video byte range failed: ${ref}`)}
+for(const ref of posters){const response=await fetch(origin+ref);if(response.status!==200||!response.headers.get('content-type')?.startsWith('image/'))throw Error(`Poster failed: ${ref}`);await response.arrayBuffer()}
+const missing=await fetch(origin+'/does-not-exist/');if(missing.status!==404)throw Error('Unknown route should be 404');
+console.log(`PASS: six clean routes and legacy redirects; ${checked} local references and anchors; four scrolling products; schematic removed; ${videos.size} streaming videos; ${posters.size} posters.`);
