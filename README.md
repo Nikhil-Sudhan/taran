@@ -17,7 +17,7 @@ Six responsive pages in `dist/`. Run `npm start` for http://127.0.0.1:4173. Edit
 
 ## Supplied media
 
-Run `python prepare-showcase-assets.py` to prepare the images and videos from `../imagesandvideosforthewebsite`. Images are WebP; videos use H.264 with fast-start metadata and no audio. The PRODIGY software and control presentations use still poster images instead of video. Other site films use H.264 with fast-start metadata and no audio.
+Run `python prepare-showcase-assets.py` to prepare the images and videos from `../imagesandvideosforthewebsite`. Images are WebP; videos use H.264 with fast-start metadata and no audio. The PRODIGY software and control product sections contain text only, with no videos or still images. Other site films use H.264 with fast-start metadata and no audio.
 
 The homepage is intentionally concise: the main hero, one mission statement, the OASIS motor film and a contact prompt. The product page presents every product in a scrolling, alternating layout with clean media edges and no gradient overlays. The motor film appears only on the homepage. The horizontal product selector and carousel controls are removed. The capabilities schematic has been removed. Navigation uses clean directory URLs, with redirects from legacy `.html` URLs.
 
