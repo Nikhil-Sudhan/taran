@@ -17,9 +17,11 @@ Six responsive pages in `dist/`. Run `npm start` for http://127.0.0.1:4173. Edit
 
 ## Supplied media
 
-Run `python prepare-showcase-assets.py` to prepare the images and videos from `../imagesandvideosforthewebsite`. Images are WebP; videos use H.264 with fast-start metadata and no audio. The control demonstration uses the first four seconds, as requested in its source filename. Poster frames keep media sections visible before playback.
+Run `python prepare-showcase-assets.py` to prepare the images and videos from `../imagesandvideosforthewebsite`. Images are WebP; videos use H.264 with fast-start metadata and no audio. The PRODIGY software and control presentations use still poster images instead of video. Other site films use H.264 with fast-start metadata and no audio.
 
 The homepage is intentionally concise: the main hero, one mission statement, the OASIS motor film and a contact prompt. The product page presents every product in a scrolling, alternating layout with clean media edges and no gradient overlays. The motor film appears only on the homepage. The horizontal product selector and carousel controls are removed. The capabilities schematic has been removed. Navigation uses clean directory URLs, with redirects from legacy `.html` URLs.
+
+The homepage headline and supporting copy are shortened. The OASIS film fills the page width without side gutters. Media overlay labels are removed, including the incubation video caption; only the two mentor portrait badges remain. Tarandeep and Rohan have no number badges, and Simran's entry has no SpaceKaur label.
 
 The IIT Madras section uses only the research and workbench video. The incubation montage uses the 0:42-0:56 excerpt from IITM Research Park's film: https://www.youtube.com/watch?v=QDXf4R0fmE0. `dist/assets/iitm-research-park.mp4` is trimmed to 10 seconds (250 frames at 25 fps). `incubation-montage.mp4` plays 5 seconds of campus, 3 seconds of software development and 2 seconds of control development, without repeating a sequence; total 10 seconds. The ten-second incubation montage loops continuously without playback controls. The source is credited below the video. Run `python prepare-incubation-media.py` with the source excerpt in `../media-review/iitm-research-park-cut.mp4` to rebuild it.
 

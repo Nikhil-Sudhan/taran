@@ -18,12 +18,6 @@ const filmObserver=new IntersectionObserver(entries=>entries.forEach(({target,is
   else{visibleFilms.delete(target);target.pause()}
 }),{threshold:.25});
 showcaseFilms.forEach(video=>filmObserver.observe(video));
-const incubationMovie=document.querySelector('.incubation-main video');
-const incubationCaption=document.querySelector('[data-incubation-caption]');
-incubationMovie?.addEventListener('timeupdate',()=>{
-  const t=incubationMovie.currentTime;
-  incubationCaption.textContent=t<5?'IIT MADRAS RESEARCH PARK':'SPACEKAUR / ENGINEERING WORKBENCH';
-});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)showcaseFilms.forEach(video=>video.pause());else visibleFilms.forEach(playShowcase)});
 reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)showcaseFilms.forEach(video=>video.pause());else visibleFilms.forEach(playShowcase)});
 if(!reducedMotion.matches){document.documentElement.classList.add('js-motion');const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e))}
