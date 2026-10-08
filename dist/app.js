@@ -25,3 +25,13 @@ const layers=[...document.querySelectorAll('[data-parallax]')];let ticking=false
 function parallax(){if(!reducedMotion.matches)layers.forEach(el=>{const r=el.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const offset=Math.max(-90,Math.min(90,-r.top*Number(el.dataset.parallax)));el.style.transform=`translate3d(0,${offset}px,0)`}});ticking=false}
 window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(parallax);ticking=true}},{passive:true});parallax();
 document.querySelector('#contact-form')?.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(e.currentTarget);const subject=`SpaceKaur enquiry: ${data.get('interest')}`;const body=`Name: ${data.get('name')}\nWork email: ${data.get('email')}\nOrganisation: ${data.get('organisation')}\n\n${data.get('message')}`;location.href=`mailto:info@spacekaur.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;document.querySelector('#form-status').textContent='Your email draft is ready in your email app. Review and send it there. If it did not open, email info@spacekaur.com directly.'});
+
+// Native sticky chapters hold briefly without intercepting wheel, touch or keys.
+// Oversized chapters remain in normal flow so zoom and short screens cannot trap content.
+const chapters=[...document.querySelectorAll('.scroll-chapter')];
+function sizeChapters(){chapters.forEach(chapter=>chapter.classList.toggle('can-hold',!reducedMotion.matches&&chapter.firstElementChild.getBoundingClientRect().height<=innerHeight+1));}
+const chapterObserver=new ResizeObserver(sizeChapters);
+chapters.forEach(chapter=>chapterObserver.observe(chapter.firstElementChild));
+window.addEventListener('resize',sizeChapters,{passive:true});
+reducedMotion.addEventListener('change',sizeChapters);
+sizeChapters();

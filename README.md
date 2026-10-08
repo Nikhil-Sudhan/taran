@@ -32,3 +32,7 @@ Semantic navigation, labelled controls, keyboard-operable native capability disc
 ## Checks
 
 With the local server running: `node check-site.mjs`.
+
+## Full-screen scroll pacing
+
+Home hero, conviction and motion feature now occupy separate viewport-height chapters. The motor headline overlays the film with directional gradients. Each product also has its own full-screen chapter, with a full-height catalogue introduction. A native sticky hold adds 16% of a viewport of scroll travel (10% on phones); reduced motion and content taller than the viewport disable the hold. No wheel, touch or keyboard events are intercepted.

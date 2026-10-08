@@ -163,6 +163,9 @@
 
 .footer-top > div > .footer-phone{font-size:14px;color:#a5a99f}
 
+/* Match the navigation bar to the logo's black background. */
+.header,.page-index .header,.header nav{background:#000}
+
 /* Tighter section spacing where large margins separated related content. */
 .mission.section{padding-top:78px;padding-bottom:58px}
 .incubation-section.section{padding-top:62px;padding-bottom:56px}
@@ -199,3 +202,70 @@
 .product-editorial.no-media .product-type{margin-bottom:20px}
 .product-editorial.no-media h2{margin-bottom:18px}
 @media(max-width:760px){.product-editorial.no-media .product-editorial-copy{padding:38px var(--pad) 46px}}
+
+/* Full-screen chapters: a short native sticky hold gives each idea a beat. */
+.scroll-chapter{position:relative;background:#111214}
+.chapter-light{background:#fff}
+.chapter-product{background:#171819}
+.scroll-chapter>section,.scroll-chapter>article{min-height:100svh;scroll-margin-top:0}
+.scroll-chapter.can-hold{padding-bottom:clamp(64px,16svh,160px)}
+.scroll-chapter.can-hold>section,.scroll-chapter.can-hold>article{position:sticky;top:0}
+.page-index .hero{height:100svh;min-height:620px;max-height:none}
+.page-index .hero-content{padding-top:clamp(125px,18svh,180px)}
+.page-index .mission.section{padding-block:clamp(64px,11svh,130px);align-items:center;column-gap:4%;grid-template-columns:21% 75%}
+.page-index .mission .eyebrow{align-self:center;margin:0}
+.page-index .mission h2{margin-bottom:clamp(36px,7svh,72px)}
+.page-index .mission .split-copy{border-top:1px solid var(--line);padding-top:32px}
+.page-index .mission .lead{max-width:480px}
+.page-index .motion-feature{position:relative;isolation:isolate;display:flex;align-items:center;overflow:hidden;background:#111214}
+.motion-feature .motion-feature-head{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:30px;width:100%;padding:80px var(--pad);pointer-events:none}
+.motion-feature-head h2{font-size:clamp(60px,8.5vw,132px);line-height:.96;letter-spacing:-.055em}
+.motion-feature-head .link{align-self:flex-start;pointer-events:auto}
+.motion-feature .motion-film{position:absolute;inset:0;aspect-ratio:auto;background:#111214;z-index:0}
+.motion-feature .showcase-video{width:100%;height:100%;object-fit:cover;object-position:center}
+.motion-feature .motion-film::before{inset:0;height:100%;background:linear-gradient(90deg,#111214 0%,rgba(17,18,20,.93) 12%,rgba(17,18,20,.68) 32%,rgba(17,18,20,.14) 62%,transparent 82%)}
+.page-product .catalogue-intro.section{min-height:calc(100svh - 100px);display:flex;align-items:center;padding-block:70px}
+.catalogue-intro-title{width:100%;margin:0;gap:4%;grid-template-columns:61% 35%}
+.chapter-product .product-editorial{border-top:1px solid #ffffff20;align-items:center}
+.chapter-product .product-visual{align-self:center}
+.chapter-product .product-visual img{max-height:84svh;object-fit:contain}
+.chapter-product .product-editorial-copy{padding-block:72px}
+.chapter-product .product-editorial.no-media{display:flex;align-items:center}
+.chapter-product .product-editorial.no-media .product-editorial-copy{width:100%;max-width:1000px;padding-block:72px}
+.chapter-product .no-media h2{font-size:clamp(64px,8vw,116px)}
+.chapter-product .no-media .product-editorial-copy>p{max-width:460px}
+@media(max-width:1000px){
+  .page-index .mission.section{grid-template-columns:1fr;align-content:center;gap:48px}
+  .page-index .mission .eyebrow{align-self:start}
+}
+@media(max-width:760px){
+  .scroll-chapter.can-hold{padding-bottom:10svh}
+  .page-index .hero{min-height:560px}
+  .page-index .hero-content{padding-top:112px}
+  .page-index .mission.section{padding-block:64px;gap:46px}
+  .page-index .mission h2{font-size:11vw;margin-bottom:42px}
+  .page-index .mission .split-copy{padding-top:26px;grid-template-columns:12% 88%}
+  .page-index .mission .lead{font-size:22px}
+  .motion-feature .motion-feature-head{align-self:flex-start;padding:64px var(--pad);gap:18px}
+  .motion-feature-head h2{font-size:17vw}
+  .motion-feature .showcase-video{object-fit:contain;object-position:center 72%}
+  .page-product .catalogue-intro.section{min-height:calc(100svh - 82px);padding-block:60px}
+  .catalogue-intro-title{grid-template-columns:1fr;gap:40px}
+  .chapter-product .product-editorial{align-content:center}
+  .chapter-product .product-visual{aspect-ratio:auto}
+  .chapter-product .product-visual img{max-height:43svh}
+  .chapter-product .product-editorial-copy{padding:30px var(--pad) 48px}
+  .chapter-product .product-editorial.no-media .product-editorial-copy{padding:64px var(--pad)}
+  .chapter-product .no-media h2{font-size:18vw}
+}
+@media(prefers-reduced-motion:reduce){
+  .scroll-chapter.can-hold{padding-bottom:0}
+  .scroll-chapter.can-hold>section,.scroll-chapter.can-hold>article{position:relative}
+}
+/* Keep the hold inside the containing block's content area. */
+html:has(.page-index),html:has(.page-product){scroll-padding-top:0}
+.scroll-chapter.can-hold{padding-bottom:0}
+.scroll-chapter.can-hold::after{content:'';display:block;height:clamp(64px,16svh,160px)}
+@media(max-width:760px){.scroll-chapter.can-hold::after{height:10svh}}
+@media(prefers-reduced-motion:reduce){.scroll-chapter.can-hold::after{display:none}}
+.chapter-product>.product-editorial{scroll-margin-top:0}
