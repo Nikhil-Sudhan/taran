@@ -147,7 +147,7 @@
 .person-name-link:hover{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
 .core-team-grid .portrait-caption h3{font-size:32px}
 .person-role{font-size:15px;color:#656565;margin:17px 0 0}
-.team-text-profile{max-width:1040px;margin:65px auto 0;padding:35px 0;border-block:1px solid #bdbdb9;display:grid;grid-template-columns:20% 55% 25%;align-items:center;gap:20px}
+.team-text-profile{max-width:1040px;margin:65px auto 0;padding:35px 0;border-block:1px solid #bdbdb9;display:grid;grid-template-columns:2fr 5.5fr 2.5fr;align-items:center;gap:20px}
 .team-text-profile h2{font-size:42px;line-height:1.15;letter-spacing:-.035em;margin:0}
 .team-text-profile .person-name-link{justify-content:flex-start}
 .person-credentials{font-size:14px;margin:12px 0 0;letter-spacing:.03em}
@@ -161,3 +161,5 @@
 .mentor-profile{font-size:10px;gap:25px;margin-top:19px}
 @media(max-width:1000px){.core-team-grid,.mentors-grid{gap:32px}.team-text-profile{grid-template-columns:18% 52% 30%;gap:0}.team-text-profile h2{font-size:34px}.mentors-grid .portrait-caption h3{font-size:25px}}
 @media(max-width:760px){.core-team-grid,.mentors-grid{grid-template-columns:1fr;gap:42px;max-width:440px}.core-team-grid .portrait-image,.mentors-grid .portrait-image{max-height:none}.core-team-grid .portrait-caption h3{font-size:28px}.team-text-profile{max-width:440px;grid-template-columns:1fr;gap:24px;margin-top:45px;padding:30px 0}.team-text-profile h2{font-size:34px}.team-text-profile>.link{justify-self:start}.person-name-link>span{font-size:22px}.mentors-section .section-head{max-width:440px;gap:28px;margin-bottom:40px}.mentors-section .section-head h2{width:100%;font-size:12vw}.mentors-grid .portrait-caption h3{font-size:26px}.mentor-designation{font-size:16px}}
+
+.footer-top > div > .footer-phone{font-size:14px;color:#a5a99f}
