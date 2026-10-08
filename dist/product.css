@@ -1,4 +1,4 @@
-/* Product-only layout: one heading edge and consistent scale within each chapter. */
+/* Product-only layout: alternating columns and consistent scale within each chapter. */
 .page-product .product-catalogue{padding:0 var(--pad)}
 .page-product .product-editorial{
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
@@ -23,8 +23,8 @@
 .page-product .product-visual{grid-column:2;grid-row:1 / 3;align-self:center;aspect-ratio:3/2;min-width:0;min-height:0;width:100%}
 .page-product .product-visual img{display:block;width:100%;height:100%;max-height:none;object-fit:contain}
 .page-product .product-editorial.no-media{display:grid;grid-template-rows:auto;align-items:center;padding-block:72px}
-.page-product .product-editorial.no-media .product-editorial-copy{align-self:center}
-.page-product .no-media .product-detail{grid-column:2;grid-row:1;align-self:center}
+.page-product .product-editorial.no-media .product-editorial-copy{grid-column:2;align-self:center}
+.page-product .no-media .product-detail{grid-column:1;grid-row:1;align-self:center}
 .page-product .product-anchor{position:absolute;top:0;left:0;width:0;height:0}
 .page-product .product-components{margin-bottom:30px}
 .page-product .product-component+.product-component{border-top:1px solid #ffffff26;margin-top:28px;padding-top:28px}
