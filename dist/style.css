@@ -122,21 +122,17 @@
 .incubation-foot a{border-bottom:1px solid #979991;padding-bottom:4px}
 @media(max-width:1000px){.incubation-head{grid-template-columns:25% 75%}.incubation-collage{gap:15px}.incubation-location{top:16px;left:16px;font-size:8px}}
 @media(max-width:760px){.incubation-head{grid-template-columns:1fr;gap:35px;margin-bottom:35px}.incubation-head h2{font-size:12vw;margin-bottom:25px}.incubation-head p{font-size:16px}.incubation-collage{grid-template-columns:1fr;gap:15px}.incubation-main{aspect-ratio:16/9}.incubation-location{font-size:6px;left:12px;top:12px;padding:8px 9px}.incubation-foot{flex-direction:column;align-items:flex-start;gap:14px;font-size:7px}}
-/* Narrow blends at section joins; keep image sides and the final film clear. */
-.product-catalogue{background:#171819;padding-top:0;--join-fade:36px}
+/* Product media uses clean, ungraded edges. */
+.product-catalogue{background:#171819;padding-top:0}
 .product-editorial,.product-editorial.reverse{border:0;background:#171819;align-items:center;scroll-margin-top:25px}
 .product-visual{background:transparent;min-height:0;overflow:hidden;align-self:stretch}
-.product-visual::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#171819 0%,transparent var(--join-fade),transparent calc(100% - var(--join-fade)),#171819 100%)}
-.product-editorial:first-child .product-visual::after{background:linear-gradient(0deg,#171819,transparent var(--join-fade))}
+.product-visual::after{display:none}
 .product-editorial-copy{padding-block:65px;position:relative;z-index:1}
 .product-editorial-copy .product-type{font-size:14px;margin:0 0 30px;color:#b6b9bb}
 .product-editorial-copy h2{font-size:clamp(42px,4.6vw,70px);overflow-wrap:normal;margin:0 0 28px}
 .product-model-code{display:block;font-size:clamp(19px,2vw,29px);letter-spacing:0;margin-top:14px;line-height:1.25}
-.product-film-section{background:#171819;padding:0;--join-fade:36px}
-.product-film-frame{position:relative;max-width:none;width:100%;background:#171819;aspect-ratio:16/9}
-.product-film-frame::after{content:'';position:absolute;inset:0 0 auto;height:var(--join-fade);pointer-events:none;background:linear-gradient(180deg,#171819,transparent)}
 
-@media(max-width:760px){.product-catalogue,.product-film-section{--join-fade:20px}.product-editorial-copy{padding:25px var(--pad) 52px}.product-editorial-copy h2{font-size:46px}.product-editorial-copy .product-type{font-size:12px;margin-bottom:22px}.product-model-code{font-size:22px}}
+@media(max-width:760px){.product-editorial-copy{padding:25px var(--pad) 52px}.product-editorial-copy h2{font-size:46px}.product-editorial-copy .product-type{font-size:12px;margin-bottom:22px}.product-model-code{font-size:22px}}
 
 /* Pure white surfaces and tighter spacing across the site. */
 :root{--paper:#fff}
