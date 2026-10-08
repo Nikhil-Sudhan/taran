@@ -35,6 +35,6 @@ With the local server running: `node check-site.mjs`.
 
 ## Full-screen scroll pacing
 
-Home hero, conviction and motion feature now occupy separate viewport-height chapters. The motor headline overlays the film with directional gradients. Each product also has its own full-screen chapter, with a full-height catalogue introduction. A native sticky hold adds 16% of a viewport of scroll travel (10% on phones); reduced motion and content taller than the viewport disable the hold. No wheel, touch or keyboard events are intercepted.
+Home hero, conviction and motion feature now occupy separate viewport-height chapters. The motor headline overlays the film with a left-side gradient. Each product also has its own full-screen chapter, with a full-height catalogue introduction. Matching the supplied Loft Lab reference, a native sticky hold adds 60% of a viewport of scroll travel on home and product, including phones: each chapter occupies 160% of the viewport, with its content pinned full-screen for the first 60%. Reduced motion and content taller than the viewport disable the hold. No wheel, touch or keyboard events are intercepted.
 
 The Capabilities connected-disciplines hardware section also fills the viewport and uses the same native scroll hold. Its complete assembly image stays visible, with a stacked image and copy layout on phones.

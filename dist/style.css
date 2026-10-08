@@ -205,6 +205,8 @@
 
 /* Full-screen chapters: a short native sticky hold gives each idea a beat. */
 .scroll-chapter{position:relative;background:#111214}
+/* Reference pacing: one full screen plus 60% extra scroll travel while pinned. */
+.page-index .scroll-chapter,.page-product .scroll-chapter{--chapter-hold:60svh}
 .chapter-light{background:#fff}
 .chapter-product{background:#171819}
 .scroll-chapter>section,.scroll-chapter>article{min-height:100svh;scroll-margin-top:0}
@@ -265,8 +267,8 @@
 /* Keep the hold inside the containing block's content area. */
 html:has(.page-index),html:has(.page-product){scroll-padding-top:0}
 .scroll-chapter.can-hold{padding-bottom:0}
-.scroll-chapter.can-hold::after{content:'';display:block;height:clamp(64px,16svh,160px)}
-@media(max-width:760px){.scroll-chapter.can-hold::after{height:10svh}}
+.scroll-chapter.can-hold::after{content:'';display:block;height:var(--chapter-hold,clamp(64px,16svh,160px))}
+@media(max-width:760px){.scroll-chapter.can-hold::after{height:var(--chapter-hold,10svh)}}
 @media(prefers-reduced-motion:reduce){.scroll-chapter.can-hold::after{display:none}}
 .chapter-product>.product-editorial{scroll-margin-top:0}
 
