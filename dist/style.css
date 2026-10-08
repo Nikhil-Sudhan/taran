@@ -46,6 +46,7 @@
 .motion-feature-head h2{font-size:clamp(45px,5.6vw,84px);margin:0}
 .motion-feature-head .link{justify-self:end;align-self:end;font-size:10px;gap:22px}
 .motion-film{position:relative;aspect-ratio:16/9;background:#090909}
+.motion-film::before{content:'';position:absolute;inset:0 0 auto;height:clamp(80px,12vw,190px);background:linear-gradient(180deg,#111214 0%,rgba(17,18,20,.82) 20%,rgba(17,18,20,.35) 55%,rgba(17,18,20,0) 100%);z-index:1;pointer-events:none}
 .motion-film::after{content:'';position:absolute;inset:0;background:url('assets/hero-grain.svg');background-size:180px;opacity:.10;mix-blend-mode:soft-light;pointer-events:none}
 .motion-feature .showcase-video{height:100%;object-fit:contain}
 .engineering-strip{display:grid;grid-template-columns:62% 38%;background:#171819;color:white}
