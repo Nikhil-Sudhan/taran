@@ -269,3 +269,16 @@ html:has(.page-index),html:has(.page-product){scroll-padding-top:0}
 @media(max-width:760px){.scroll-chapter.can-hold::after{height:10svh}}
 @media(prefers-reduced-motion:reduce){.scroll-chapter.can-hold::after{display:none}}
 .chapter-product>.product-editorial{scroll-margin-top:0}
+
+/* Capabilities hardware chapter fills the viewport and shares the native hold. */
+.page-capabilities .chapter-engineering{background:#171819}
+.page-capabilities .chapter-engineering .engineering-photo{min-width:0;min-height:0;background:#747677}
+.page-capabilities .chapter-engineering .engineering-photo>img{position:absolute;inset:0;object-fit:contain}
+.page-capabilities .chapter-engineering .engineering-strip-copy{padding-block:clamp(32px,6svh,65px)}
+@media(max-width:760px){
+  .page-capabilities .chapter-engineering .engineering-strip{grid-template-rows:minmax(180px,42svh) auto}
+  .page-capabilities .chapter-engineering .engineering-photo{aspect-ratio:auto}
+  .page-capabilities .chapter-engineering .engineering-strip-copy{padding:24px var(--pad)}
+  .page-capabilities .chapter-engineering .engineering-strip-copy h2{font-size:clamp(40px,min(13vw,8svh),64px);margin:24px 0 20px}
+  .page-capabilities .chapter-engineering .engineering-strip-copy p{margin-bottom:0}
+}
