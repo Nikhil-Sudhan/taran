@@ -48,7 +48,7 @@ contact:`${innerHero('01','CONTACT US','CONTACT<br><span class="outline">US.</sp
 };
 for(const [page,content] of Object.entries(pages)){
 const pacedContent=page==='index'?content.replace(/<section\b[\s\S]*?<\/section>/g,section=>section.includes('class="cta ')?section:chapter(section,section.includes('id="mission"')?'light':'dark')):page==='product'?content.replace(/<article\b[\s\S]*?<\/article>/g,section=>chapter(section,'product')):content;
-const title=page==='index'?'SPACEKAUR':nav.find(([p])=>p===page)[1];
+const title=page==='index'?'Spacekaur':nav.find(([p])=>p===page)[1];
 const directory=page==='index'?'dist':`dist/${page}`;
 mkdirSync(directory,{recursive:true});
 writeFileSync(`${directory}/index.html`,`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111210"><title>${page==='index'?title:`SpaceKaur | ${title}`}</title><meta name="description" content="SpaceKaur builds autonomous systems for space and aerospace. Explore our capabilities, products and team. Incubated at IIT Madras."><link rel="icon" href="/assets/spacekaur-logo.png"><link rel="preload" href="/assets/helvetica-roman.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/style.css">${page==='product'?'<link rel="stylesheet" href="/product.css">':''}<script src="/app.js" defer></script></head><body class="page-${page}">${header(page)}<main id="main">${pacedContent}</main>${footer()}</body></html>`);
