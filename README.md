@@ -1,6 +1,24 @@
 # SpaceKaur website
 
-Six responsive pages in `dist/`. Run `npm start` for http://127.0.0.1:4173. Edit shared page content in `generate.mjs`, then run `npm run build`. Shared styling and interaction code are in `dist/style.css` and `dist/app.js`.
+Seven responsive pages in `dist/`. Run `npm start` for http://127.0.0.1:4173. Edit shared page content in `generate.mjs`, then run `npm run build`. Shared styling and interaction code are in `dist/style.css` and `dist/app.js`.
+
+## Vercel deployment
+
+Source repository: https://github.com/Nikhil-Sudhan/taran. Import this repository into Vercel and use `main` as the production branch.
+
+| Setting | Value |
+| --- | --- |
+| Root directory | Repository root (`.`) |
+| Framework preset | Other |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Environment variables | None required |
+
+`vercel.json` configures the static build, trailing-slash URLs, and permanent redirects from the legacy `.html` addresses. Vercel serves the generated files directly; `server.mjs` is for local development only. Once the GitHub integration is connected, pushes to `main` deploy to production and pull requests receive preview deployments.
+
+Keep `dist/` in Git: its styles, scripts, fonts, images, and videos are source assets, while `generate.mjs` regenerates the HTML. The Python media-preparation scripts are optional authoring tools that require the original supplied media outside this repository; Vercel builds use the prepared assets already committed here.
+
+Configuration reference: https://vercel.com/docs/project-configuration/vercel-json.
 
 ## Content decisions
 

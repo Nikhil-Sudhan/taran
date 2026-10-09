@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/capabilities.html", "destination": "/capabilities/", "permanent": true },
+    { "source": "/product.html", "destination": "/product/", "permanent": true },
+    { "source": "/about.html", "destination": "/about/", "permanent": true },
+    { "source": "/team.html", "destination": "/team/", "permanent": true },
+    { "source": "/careers.html", "destination": "/careers/", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact/", "permanent": true }
+  ]
+}
