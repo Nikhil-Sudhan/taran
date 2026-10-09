@@ -1,4 +1,5 @@
 /* Product-only layout: alternating columns and consistent scale within each chapter. */
+.page-product .catalogue-intro h1{font-size:clamp(64px,8vw,124px);line-height:.98}
 .page-product .product-catalogue{padding:0 var(--pad)}
 .page-product .product-editorial{
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
@@ -32,6 +33,7 @@
 .page-product .product-component h3 span{display:block;color:#b6b9bb;font-size:15px;letter-spacing:0;margin-top:8px}
 .page-product .product-component p{margin-bottom:0;max-width:440px}
 @media(max-width:760px){
+  .page-product .catalogue-intro h1{font-size:clamp(48px,13vw,90px)}
   .page-product .product-editorial,
   .page-product .product-editorial.no-media{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;gap:28px;padding-block:44px}
   .page-product .product-editorial-copy,

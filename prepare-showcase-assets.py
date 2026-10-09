@@ -18,3 +18,7 @@ for original,name,duration in clips:
     subprocess.run(['ffmpeg','-y','-hide_banner','-loglevel','error','-ss','1','-i',str(out/(name+'.mp4')),'-frames:v','1','-vf','scale=1280:-2',str(out/(name+'-poster.jpg'))],check=True)
     print(name, (out/(name+'.mp4')).stat().st_size)
 print('Showcase assets prepared.')
+
+# Home film: trim the bottom containing the slogan and Gemini mark; keep the original source.
+subprocess.run(['ffmpeg','-y','-hide_banner','-loglevel','error','-i',str(out/'servo-motor.mp4'),'-vf','crop=1280:560:0:0','-an','-c:v','libx264','-preset','medium','-crf','20','-pix_fmt','yuv420p','-movflags','+faststart',str(out/'servo-motor-cropped.mp4')],check=True)
+subprocess.run(['ffmpeg','-y','-hide_banner','-loglevel','error','-ss','1','-i',str(out/'servo-motor-cropped.mp4'),'-frames:v','1',str(out/'servo-motor-cropped-poster.jpg')],check=True)

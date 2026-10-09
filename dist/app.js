@@ -1,6 +1,6 @@
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
 const menu=document.querySelector('.menu-toggle');const nav=document.querySelector('#navigation');
-menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);menu.innerHTML=open?'Close <span>−</span>':'Menu <span>+</span>'});
+menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);menu.textContent=open?'Close':'Menu'});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){menu.click();menu.focus()}});
 document.querySelector('.back-top')?.addEventListener('click',()=>{window.scrollTo({top:0,behavior:reducedMotion.matches?'instant':'smooth'});document.querySelector('.wordmark').focus({preventScroll:true})});
 const movie=document.querySelector('#hero-video');

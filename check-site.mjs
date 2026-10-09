@@ -23,9 +23,9 @@ for(const page of pages){
 }
 const product=fs.readFileSync('dist/product/index.html','utf8');
 if((product.match(/class="product-editorial /g)||[]).length!==3||/data-product-step|product-showcase|OASIS \/ IN MOTION|A closer look/.test(product))throw Error('Product layout regression');
-if((product.match(/<h2>PRODIGY/g)||[]).length!==1||!product.includes('id="prodigy"')||!product.includes('id="software"')||!product.includes('id="control"'))throw Error('Combined PRODIGY section or legacy anchors missing');
-if(fs.readFileSync('dist/capabilities/index.html','utf8').includes('simulink-model.webp'))throw Error('Schematic is still present');
+if(!product.includes('PRODIGY S1')||!product.includes('PRODIGY SKD-I 48/5')||!product.includes('id="prodigy"')||!product.includes('id="software"')||!product.includes('id="control"'))throw Error('Combined PRODIGY section or legacy anchors missing');
+if(!fs.readFileSync('dist/capabilities/index.html','utf8').includes('simulink-model.webp'))throw Error('Modeling thumbnail missing');
 for(const ref of videos){const range=await fetch(origin+ref,{headers:{Range:'bytes=0-1023'}});if(range.status!==206||(await range.arrayBuffer()).byteLength!==1024)throw Error(`Video byte range failed: ${ref}`)}
 for(const ref of posters){const response=await fetch(origin+ref);if(response.status!==200||!response.headers.get('content-type')?.startsWith('image/'))throw Error(`Poster failed: ${ref}`);await response.arrayBuffer()}
 const missing=await fetch(origin+'/does-not-exist/');if(missing.status!==404)throw Error('Unknown route should be 404');
-console.log(`PASS: six clean routes and legacy redirects; ${checked} local references and anchors; three product sections with combined PRODIGY; schematic removed; ${videos.size} streaming videos; ${posters.size} posters.`);
+console.log(`PASS: six clean routes and legacy redirects; ${checked} local references and anchors; three product sections with combined PRODIGY; modeling thumbnail present; ${videos.size} streaming videos; ${posters.size} posters.`);
