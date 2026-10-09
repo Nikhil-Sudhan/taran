@@ -42,3 +42,7 @@ The Capabilities connected-disciplines hardware section also fills the viewport 
 ## Home page client revision — 9 October 2026
 
 The home header is transparent over the hero's left-to-right black-to-transparent gradient. The headline reads “Proud to build critical subsystems for India's first smart ammunition.” The conviction chapter uses Taran's quote, “The question is not ‘if.’ The question is ‘how?’ Because there is always a way.” attributed to “~ Taran, Founder and CEO of SPACEKAUR.” Eyebrow labels and decorative plus signs are removed throughout the site; capability disclosures use chevrons. The home film links to the product catalogue with “View Products.” Its video and poster use a 1280 × 560 crop from the top edge of the original 1280 × 720 film to exclude the embedded slogan and Gemini watermark. The original film remains available, and prepare-showcase-assets.py regenerates the cropped files.
+
+## Continuous scrolling and Careers
+
+Preserve the native pass-and-hold effect unless the user explicitly requests its removal. The home videos and product chapters retain their 60svh sticky hold, with reduced-motion and oversized-content safeguards. The motor video uses an explicit sticky rule so its section styling cannot disable the hold. The Careers page is linked from the main navigation. Its confirmed email is careers@spacekaur.com. Join the Team is a disabled placeholder, as requested, until the client supplies the Google Form URL; replace the disabled button with an external link when that URL arrives.

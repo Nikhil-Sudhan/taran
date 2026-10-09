@@ -1,5 +1,5 @@
 import fs from 'node:fs';import path from 'node:path';
-const pages=['index','capabilities','product','about','team','contact'];let checked=0;const videos=new Set();const posters=new Set();
+const pages=['index','capabilities','product','about','team','careers','contact'];let checked=0;const videos=new Set();const posters=new Set();
 const origin='http://127.0.0.1:4173';
 const route=page=>page==='index'?'/':`/${page}/`;
 for(const page of pages){
@@ -28,4 +28,4 @@ if(!fs.readFileSync('dist/capabilities/index.html','utf8').includes('simulink-mo
 for(const ref of videos){const range=await fetch(origin+ref,{headers:{Range:'bytes=0-1023'}});if(range.status!==206||(await range.arrayBuffer()).byteLength!==1024)throw Error(`Video byte range failed: ${ref}`)}
 for(const ref of posters){const response=await fetch(origin+ref);if(response.status!==200||!response.headers.get('content-type')?.startsWith('image/'))throw Error(`Poster failed: ${ref}`);await response.arrayBuffer()}
 const missing=await fetch(origin+'/does-not-exist/');if(missing.status!==404)throw Error('Unknown route should be 404');
-console.log(`PASS: six clean routes and legacy redirects; ${checked} local references and anchors; three product sections with combined PRODIGY; modeling thumbnail present; ${videos.size} streaming videos; ${posters.size} posters.`);
+console.log(`PASS: seven clean routes and legacy redirects; ${checked} local references and anchors; three product sections with combined PRODIGY; modeling thumbnail present; ${videos.size} streaming videos; ${posters.size} posters.`);

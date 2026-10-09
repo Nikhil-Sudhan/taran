@@ -1,11 +1,11 @@
 import http from 'node:http';import fs from 'node:fs';import path from 'node:path';
 const root=path.resolve('dist');
-const pages=new Set(['capabilities','product','about','team','contact']);
+const pages=new Set(['capabilities','product','about','team','careers','contact']);
 const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.mp4':'video/mp4','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.svg':'image/svg+xml','.ttf':'font/ttf'};
 http.createServer((req,res)=>{
   let url,pathname;
   try{url=new URL(req.url,'http://localhost');pathname=decodeURIComponent(url.pathname)}catch{res.writeHead(400);return res.end('Bad request')}
-  const legacy=/^\/(index|capabilities|product|about|team|contact)\.html$/.exec(pathname);
+  const legacy=/^\/(index|capabilities|product|about|team|careers|contact)\.html$/.exec(pathname);
   let redirect=legacy?(legacy[1]==='index'?'/':`/${legacy[1]}/`):null;
   if(pages.has(pathname.slice(1)))redirect=pathname+'/';
   if(redirect){res.writeHead(308,{Location:redirect+url.search});return res.end()}

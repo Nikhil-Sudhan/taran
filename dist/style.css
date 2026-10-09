@@ -342,3 +342,20 @@ html:has(.page-index),html:has(.page-product){scroll-padding-top:0}
   .page-capabilities .cap-detail-model{grid-template-columns:1fr;gap:22px;padding-right:10px}
   .page-capabilities .model-thumbnail{width:100%;max-width:280px}
 }
+
+.careers-hero{min-height:calc(100svh - 100px);display:grid;grid-template-columns:1.25fr 1fr;align-items:center;gap:8vw;padding-block:100px}
+.careers-title h1{font-size:clamp(64px,8vw,120px);font-weight:700;letter-spacing:-.065em;line-height:.98;margin-bottom:28px}
+.careers-title p{font-size:22px;color:#444}
+.careers-apply{border-top:1px solid #aaa;padding-top:32px}
+.careers-apply h2{font-size:clamp(30px,3vw,44px);margin-bottom:24px}
+.careers-apply>p{max-width:390px}
+.careers-apply .button{margin-top:20px;min-width:240px}
+.careers-apply .button:disabled{opacity:.55;cursor:default;background:transparent;color:inherit}
+.careers-status{font-size:13px;margin:12px 0 32px}
+.careers-email{display:inline-flex;gap:22px;font-size:clamp(18px,2vw,27px);border-bottom:1px solid #aaa;padding-bottom:10px}
+@media(min-width:761px) and (max-width:1100px){.header nav{gap:12px;font-size:9px}.wordmark{gap:7px;font-size:17px}.nav-logo{width:65px;height:65px}}
+@media(max-width:760px){.careers-hero{grid-template-columns:1fr;gap:44px;padding-block:56px}.careers-title h1{font-size:16vw}.careers-title p{font-size:18px}.careers-apply{padding-top:26px}}
+
+/* Keep the video pinned through the same pass-and-hold interval as other chapters. */
+.scroll-chapter.can-hold>.motion-feature{position:sticky;top:0}
+@media(prefers-reduced-motion:reduce){.scroll-chapter.can-hold>.motion-feature{position:relative}}
