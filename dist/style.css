@@ -359,3 +359,26 @@ html:has(.page-index),html:has(.page-product){scroll-padding-top:0}
 /* Keep the video pinned through the same pass-and-hold interval as other chapters. */
 .scroll-chapter.can-hold>.motion-feature{position:sticky;top:0}
 @media(prefers-reduced-motion:reduce){.scroll-chapter.can-hold>.motion-feature{position:relative}}
+
+/* Client revision: soft full-colour portraits and a compact site footer. */
+.page-team .portrait-image img,.page-team .portrait:hover img{filter:saturate(.78) contrast(.96) brightness(.96)}
+.page-team .person-role{font-size:14px;line-height:1.5;margin:10px 0 0;color:#636363}
+body>footer{padding:36px var(--pad) 18px}
+body>footer .footer-top p{font-size:20px;margin-bottom:0}
+body>footer .footer-top>div{gap:9px}
+body>footer .footer-email{font-size:20px}
+body>footer .footer-word{font-size:clamp(54px,9vw,150px);margin-top:28px;line-height:1}
+body>footer .footer-bottom{padding-top:16px;gap:14px}
+.footer-flags{display:flex;align-items:center;gap:12px}
+.footer-flags img{display:block;object-fit:fill;border-radius:1px}
+@media(max-width:760px){
+ .page-team .person-role{font-size:12px;line-height:1.45;margin-top:8px}
+ body>footer{padding-top:28px;padding-bottom:16px}
+ body>footer .footer-top{gap:20px}
+ body>footer .footer-top p{font-size:18px}
+ body>footer .footer-top>div{gap:7px}
+ body>footer .footer-email{font-size:18px}
+ body>footer .footer-word{font-size:12.9vw;margin-top:26px}
+ body>footer .footer-bottom{padding-top:14px;gap:12px}
+ .footer-flags{justify-content:flex-end}
+}
